@@ -1,0 +1,52 @@
+.carrossel{
+  position: relative;
+  overflow: hidden;
+  height: 696px;
+}
+
+.carrossel .itens {
+  width: 20000em;
+  position: absolute;
+  /*animation-delay: 1s;*/
+  transition: 1s;
+  animation: slideOut 1s ;
+  left: 0vw;
+}
+.carrossel .itens > *:nth-child(3) {
+  /*filter: blur(10px);*/
+}
+.carrossel .itens > * {
+  height: 696px;
+  width: 100vw;
+  float: left;
+  overflow: visible
+}
+
+.setas a {
+  position: absolute;
+  top: 50%;
+  outline: 0;
+  width: 37px;
+  height: 84px;
+  text-indent: -9999px;
+  z-index: 9999;
+  cursor: pointer;
+  background-size: cover;
+}
+.setas a:first-child {
+  left: 10px;
+  background: url(images/controls.png) no-repeat 0 -32px;
+  background: url(esquerda.png) no-repeat ;
+}
+.setas a:last-child {
+  right: 10px;
+  background: url(images/controls.png) no-repeat -43px -32px;
+  background: url(direita.png) no-repeat ;
+}
+
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
