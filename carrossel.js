@@ -4,8 +4,12 @@ var Carrossel = function(opcoes){
   var _this = this;
 
   /*Setando Defauts*/
+  _this.opcoes = opcoes;
   _this.tempo = opcoes.tempo || 3;
   _this.classeEspecificada = opcoes.classe || 'carrossel';
+  _this.infinito = (typeof opcoes.infinito !== 'undefined') ?  opcoes.infinito : true ;
+  _this.unidade = opcoes.unidade || 'vw';
+
 
   _this.elementosComClasseEspecificada = document.getElementsByClassName(_this.classeEspecificada);
 
@@ -21,38 +25,58 @@ var Carrossel = function(opcoes){
   _this.bannerAtual     = 0;
   _this.loop            = null;
 
+  _this.carrossel.setAttribute("class", _this.carrossel.getAttribute('class') + ' ' + 'classeCarrossel');
+
   _this.anterior = function (){
-    _this.bannerAtual--;
-    if(_this.bannerAtual < 0){
-      _this.itens.setAttribute("class", "itens notransition");
-      _this.bannerAtual = _this.numeroDeBanners;
-      trocarImg();
+    if(_this.infinito){
+      _this.bannerAtual--;
+      if(_this.bannerAtual < 0){
+        _this.itens.setAttribute("class", "itens notransition");
+        _this.bannerAtual = _this.numeroDeBanners;
+        trocarImg();
 
-      setTimeout(function() {
-        _this.anterior();
-      }, 0);
+        setTimeout(function() {
+          _this.anterior();
+        }, 0);
 
+      }else{
+        _this.itens.setAttribute("class", "itens");
+        trocarImg();
+      }
     }else{
+      this.bannerAtual--;
+      if(_this.bannerAtual < 0){
+        _this.bannerAtual = _this.numeroDeBanners - 1;
+      }
       _this.itens.setAttribute("class", "itens");
       trocarImg();
     }
-
   }
 
   _this.proxima = function (){
-    _this.bannerAtual++;
-    if(_this.bannerAtual > _this.numeroDeBanners){
-      _this.itens.setAttribute("class", "itens notransition");
-      _this.bannerAtual = 0;
-      trocarImg();
+    if(_this.infinito){
+      _this.bannerAtual++;
+      if(_this.bannerAtual > _this.numeroDeBanners){
+        _this.itens.setAttribute("class", "itens notransition");
+        _this.bannerAtual = 0;
+        trocarImg();
 
-      setTimeout(function() {
-        _this.proxima();
-      }, 0);
+        setTimeout(function() {
+          _this.proxima();
+        }, 0);
 
+      }else{
+        _this.itens.setAttribute("class", "itens");
+        trocarImg();
+      }
     }else{
-      _this.itens.setAttribute("class", "itens");
-      trocarImg();
+      _this.bannerAtual++;
+      if(_this.bannerAtual >= _this.numeroDeBanners){
+        _this.bannerAtual = 0;
+        trocarImg();
+      }else{
+        trocarImg();
+      }
     }
   }
 
@@ -80,7 +104,7 @@ var Carrossel = function(opcoes){
   }
 
   function trocarImg(){
-    _this.itens.style.left = "-"+_this.bannerAtual * 100+"vw";
+    _this.itens.style.left = "-"+_this.bannerAtual * 100+_this.unidade;
     indicadoresAtivos = _this.indicadores.getElementsByClassName('ativo');
     for (i of indicadoresAtivos) {
       i.setAttribute("class", "");
@@ -161,7 +185,9 @@ var Carrossel = function(opcoes){
 
   registraEventosIndicadores();
 
-  criaClones();
+  if(_this.infinito){
+    criaClones();
+  }
 
   iniciarLoop();
 
