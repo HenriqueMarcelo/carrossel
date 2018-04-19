@@ -8,9 +8,8 @@
   .itens {
     width: 20000em;
     position: absolute;
-    /*animation-delay: 1s;*/
     @include transition(1s);
-    @include animation(slideOut 1s);
+    // @include animation(slideOut 1s);
     left: 0vw;
 
     & > * {
@@ -45,7 +44,7 @@
     background: url(esquerda.png) no-repeat;
   }
   &:last-child {
-    left: 10px;
+    right: 10px;
     background: url(direita.png) no-repeat;
   }
 }
