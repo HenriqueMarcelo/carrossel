@@ -1,0 +1,20 @@
+@mixin crossBrowser($property, $val){
+  -webkit-#{$property}: $val;
+     -moz-#{$property}: $val;
+      -ms-#{$property}: $val;
+       -o-#{$property}: $val;
+          #{$property}: $val;
+}
+
+@mixin transition($val){
+  @include crossBrowser(transition,$val);
+}
+@mixin animation($val){
+  @include crossBrowser(animation,$val);
+}
+@mixin background-size($val){
+  @include crossBrowser(background-size,$val);
+}
+@mixin border-radius($val){
+  @include crossBrowser(border-radius,$val);
+}

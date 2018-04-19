@@ -1,0 +1,82 @@
+@import "mixin.scss";
+
+.classeCarrossel {
+  position: relative;
+  overflow: hidden;
+  height: 696px;
+
+  .itens {
+    width: 20000em;
+    position: absolute;
+    /*animation-delay: 1s;*/
+    @include transition(1s);
+    @include animation(slideOut 1s);
+    left: 0vw;
+
+    & > * {
+      height: 696px;
+      width: 100vw;
+      float: left;
+      overflow: visible;
+      text-indent: 100000%;
+      color: #00000000;
+    }
+
+    & > *:nth-child(4) {
+      // Teste
+      //filter: blur(10px);
+    }
+  }
+}
+
+.setas a {
+  position: absolute;
+  top: 50%;
+  outline: 0;
+  width: 37px;
+  height: 84px;
+  text-indent: -9999px;
+  z-index: 9999;
+  cursor: pointer;
+  @include background-size(cover);
+
+  &:first-child {
+    left: 10px;
+    background: url(esquerda.png) no-repeat;
+  }
+  &:last-child {
+    left: 10px;
+    background: url(direita.png) no-repeat;
+  }
+}
+
+.notransition {
+  @include transition(none !important);
+}
+
+.indicador {
+  text-align: center;
+  width: 100%;
+  bottom: 4%;
+  position: absolute;
+  & > * {
+    display: inline-block;
+    margin: 0 20px;
+  }
+  a {
+    position: absolute;
+    outline: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 9999;
+    cursor: pointer;
+    background-color: white;
+    @include border-radius(20px);
+    /*box-shadow: 0px 0px 0px 1px white;*/
+    &.ativo,
+    &:hover {
+      /*box-shadow: 0px 0px 0px 1px white;*/
+      background-color: #a3151a;
+    }
+  }
+}

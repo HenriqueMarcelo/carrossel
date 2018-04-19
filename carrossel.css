@@ -3,7 +3,6 @@
   overflow: hidden;
   height: 696px;
 }
-
 .classeCarrossel .itens {
   width: 20000em;
   position: absolute;
@@ -20,11 +19,6 @@
   animation: slideOut 1s;
   left: 0vw;
 }
-
-.classeCarrossel .itens > *:nth-child(4) {
-  /*filter: blur(10px);*/
-}
-
 .classeCarrossel .itens > * {
   height: 696px;
   width: 100vw;
@@ -49,16 +43,12 @@
   -o-background-size: cover;
   background-size: cover;
 }
-
 .setas a:first-child {
   left: 10px;
   background: url(esquerda.png) no-repeat;
-  background: url(esquerda.png) no-repeat;
 }
-
 .setas a:last-child {
-  right: 10px;
-  background: url(direita.png) no-repeat;
+  left: 10px;
   background: url(direita.png) no-repeat;
 }
 
@@ -68,24 +58,7 @@
   -ms-transition: none !important;
   -o-transition: none !important;
   transition: none !important;
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
-  transition: none !important;
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
-  transition: none !important;
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
-  transition: none !important;
 }
-
-/**/
 
 .indicador {
   text-align: center;
@@ -93,12 +66,10 @@
   bottom: 4%;
   position: absolute;
 }
-
 .indicador > * {
   display: inline-block;
   margin: 0 20px;
 }
-
 .indicador a {
   position: absolute;
   outline: 0;
@@ -114,9 +85,7 @@
   border-radius: 20px;
   /*box-shadow: 0px 0px 0px 1px white;*/
 }
-
-.indicador a.ativo,
-.indicador a:hover {
+.indicador a.ativo, .indicador a:hover {
   /*box-shadow: 0px 0px 0px 1px white;*/
   background-color: #a3151a;
 }
