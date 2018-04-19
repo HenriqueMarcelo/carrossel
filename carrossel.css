@@ -30,6 +30,8 @@
   width: 100vw;
   float: left;
   overflow: visible;
+  text-indent: 100000%;
+  color: #00000000;
 }
 
 .setas a {
