@@ -33,7 +33,7 @@
   top: 50%;
   outline: 0;
   width: 37px;
-  height: 84px;
+  height: 82px;
   text-indent: -9999px;
   z-index: 9999;
   cursor: pointer;
@@ -46,6 +46,27 @@
   &:last-child {
     right: 10px;
     background: url(direita.png) no-repeat;
+    // &::before, &::after{
+    //   width: 54px;
+    //   height: 8px;
+    //   position: absolute;
+    //   border-radius: 80px;
+    //   color: #ffffffaa;
+    //   background: currentColor;
+    //   box-shadow: 0 0 1px 0px currentColor;
+    //
+    //   content: '';
+    // }
+    // &::before{
+    //   top: 19px;
+    //   left: -7px;
+    //   transform: rotate(52deg);
+    // }
+    // &::after{
+    //   bottom: 19px;
+    //   left: -7px;
+    //   transform: rotate(-52deg);
+    // }
   }
 }
 

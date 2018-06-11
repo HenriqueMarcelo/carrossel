@@ -179,6 +179,52 @@ var Carrossel = function(opcoes){
     }
   }
 
+  /*
+  *  Ver o que fazer com isso no futuro
+  */
+  function arrastavel(){
+    var f = function callBackClickItens(ee){
+      diff = ee.x - xInicial;
+      stringCss = "calc( -"+_this.bannerAtual * 100+_this.unidade+" + "+diff+"px)";
+      _this.itens.style.left = stringCss;
+    }
+    _this.itens.addEventListener("mousedown", function callBackClickItens(e){
+      diff = 0;
+
+      if(_this.bannerAtual === _this.numeroDeBanners){
+        _this.itens.setAttribute("class", "itens notransition");
+        _this.bannerAtual = 0;
+        trocarImg();
+      }
+
+      _this.itens.setAttribute("class", "itens notransition");
+      pararLoop();
+      xInicial = e.x;
+      document.addEventListener("mousemove" ,f , false);
+      //
+    }, false);
+
+    document.addEventListener("mouseup", function callBackClickItens(e){
+      document.removeEventListener("mousemove",f , false);
+      _this.itens.setAttribute("class", "itens");
+
+      parte = document.documentElement.clientWidth / 6;
+
+      if( Math.abs(diff) < parte ){
+        trocarImg();
+      }else if(diff > 0 ){
+        if(_this.bannerAtual){
+          _this.anterior();
+        }else{
+          trocarImg();
+        }
+      }else{
+        _this.proxima();
+      }
+
+    }, false);
+  }
+
   registraEventosSetas();
 
   criaIndicadores();
