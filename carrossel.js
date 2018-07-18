@@ -4,12 +4,13 @@ var Carrossel = function(opcoes){
   var _this = this;
 
   /*Setando Defauts*/
-  _this.opcoes = opcoes;
-  _this.tempo = opcoes.tempo || 3;
-  _this.classeEspecificada = opcoes.classe || 'carrossel';
-  _this.infinito = (typeof opcoes.infinito !== 'undefined') ?  opcoes.infinito : true ;
-  _this.unidade = opcoes.unidade || 'vw';
-
+  _this.opcoes              = opcoes;
+  _this.tempo               = opcoes.tempo || 3;
+  _this.classeEspecificada  = opcoes.classe || 'carrossel';
+  _this.unidade             = opcoes.unidade || 'vw';
+  _this.temIndicadores      = (typeof opcoes.indicadores !== 'undefined') ?  opcoes.indicadores : true ;
+  _this.infinito            = (typeof opcoes.infinito !== 'undefined') ?  opcoes.infinito : true ;
+  _this.temSetas            = (typeof opcoes.setas !== 'undefined') ?  opcoes.setas : true ;
 
   _this.elementosComClasseEspecificada = document.getElementsByClassName(_this.classeEspecificada);
 
@@ -17,10 +18,10 @@ var Carrossel = function(opcoes){
 
   _this.carrossel       = _this.elementosComClasseEspecificada[0];
   _this.itens           = _this.carrossel.children[0];
-  _this.setas           = _this.carrossel.children[1];
-  _this.indicadores     = _this.carrossel.children[2];
-  _this.setaEsquerda    = _this.setas.children[0];
-  _this.setaDireita     = _this.setas.children[1];
+  _this.setas           = null;
+  _this.setaEsquerda    = null;
+  _this.setaDireita     = null;
+  _this.indicadores     = null;
   _this.numeroDeBanners = _this.itens.childElementCount;
   _this.bannerAtual     = 0;
   _this.loop            = null;
@@ -89,6 +90,24 @@ var Carrossel = function(opcoes){
     }
   }
 
+  function criaSetas(){
+    divSetas = document.createElement('div');
+    divSetas.setAttribute("class", "setas");
+    _this.carrossel.appendChild(divSetas);
+    _this.setas = divSetas;
+
+    aEsquerda = document.createElement('a');
+    aDireita  = document.createElement('a');
+    aEsquerda.innerHtml = "Anterior";
+    aDireita.innerHtml  = "Próximo";
+
+    _this.setas.appendChild(aEsquerda);
+    _this.setas.appendChild(aDireita);
+
+    _this.setaEsquerda = aEsquerda;
+    _this.setaDireita  = aDireita;
+  }
+
   function registraEventosSetas(){
     _this.setaEsquerda.addEventListener("click", function callBackEsquerda(){
       pararLoop();
@@ -139,6 +158,11 @@ var Carrossel = function(opcoes){
   }
 
   function criaIndicadores(){
+    divIndicadores = document.createElement('div');
+    divIndicadores.setAttribute("class", "indicador");
+    _this.carrossel.appendChild(divIndicadores);
+    _this.indicadores = divIndicadores;
+
     for (var i = 0; i < _this.numeroDeBanners; i++) {
       divIndicador = document.createElement('div');
       aIndicador   = document.createElement('a');
@@ -225,11 +249,15 @@ var Carrossel = function(opcoes){
     }, false);
   }
 
-  registraEventosSetas();
+  if(_this.temSetas){
+    criaSetas();
+    registraEventosSetas();
+  }
 
-  criaIndicadores();
-
-  registraEventosIndicadores();
+  if(_this.temIndicadores){
+    criaIndicadores();
+    registraEventosIndicadores();
+  }
 
   if(_this.infinito){
     criaClones();
