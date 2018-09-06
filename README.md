@@ -1,2 +1,2 @@
 # Carrossel
-Biblioteca para adcionar um banner rotativo.
+Biblioteca para adicionar um banner rotativo.
