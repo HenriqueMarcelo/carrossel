@@ -1,0 +1,134 @@
+@mixin crossBrowser($property, $val){
+  -webkit-#{$property}: $val;
+     -moz-#{$property}: $val;
+      -ms-#{$property}: $val;
+       // -o-#{$property}: $val;
+          #{$property}: $val;
+}
+
+@mixin transition($val){
+  @include crossBrowser(transition,$val);
+}
+@mixin animation($val){
+  @include crossBrowser(animation,$val);
+}
+@mixin background-size($val){
+  @include crossBrowser(background-size,$val);
+}
+@mixin border-radius($val){
+  @include crossBrowser(border-radius,$val);
+}
+@mixin transform($val){
+  @include crossBrowser(transform,$val);
+}
+@mixin box-shadow($val...){
+  @include crossBrowser(box-shadow,$val);
+}
+@mixin flex($val){
+  -webkit-box-flex: $val;
+  -moz-box-flex: $val;
+  @include crossBrowser(flex,$val);
+}
+@mixin flex-wrap($val){
+  @include crossBrowser(flex-wrap,$val);
+}
+
+@mixin display-flex(){
+  display:      -webkit-box;
+  display:     -webkit-flex;
+  display:         -moz-box;
+  display:      -ms-flexbox;
+  display:             flex;
+}
+@mixin display-inline-flex(){
+  display:   -webkit-inline-box;
+  display:  -webkit-inline-flex;
+  display:      -moz-inline-box;
+  display:   -ms-inline-flexbox;
+  display:          inline-flex;
+}
+@mixin flex-direction($val){
+  @if $val == column {
+    -webkit-box-direction: normal;
+       -moz-box-direction: normal;
+    -webkit-box-orient: vertical;
+       -moz-box-orient: vertical;
+  }
+  @if $val == row {
+    -webkit-box-direction: normal;
+       -moz-box-direction: normal;
+    -webkit-box-orient: horizontal;
+       -moz-box-orient: horizontal;
+  }
+  @if $val == column-reverse {
+    -webkit-box-direction: reverse;
+       -moz-box-direction: reverse;
+    -webkit-box-orient: vertical;
+       -moz-box-orient: vertical;
+  }
+  @if $val == row-reverse {
+    -webkit-box-direction: reverse;
+       -moz-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+       -moz-box-orient: horizontal;
+  }
+  @include crossBrowser(flex-direction,$val);
+}
+@mixin justify-content($val){
+  @if $val == space-between {
+    -webkit-box-pack: justify;
+       -ms-flex-pack: justify;
+  } @else if $val == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $val;
+       -ms-flex-pack: $val;
+  }
+  @include crossBrowser(justify-content,$val);
+}
+@mixin align-items($val){
+  @if $val == flex-end {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+  } @else{
+    -webkit-box-align: $val;
+        -ms-flex-align: $val;
+  }
+  @include crossBrowser(align-items,$val);
+}
+@mixin linear-gradient($val...){
+  background: -webkit-linear-gradient($val);
+  background: -moz-linear-gradient($val);
+  background: -o-linear-gradient($val);
+  background: linear-gradient($val);
+}
+@mixin align-self($val){
+   -webkit-align-self: $val;
+  -ms-flex-item-align: $val;
+   -ms-grid-row-align: $val;
+           align-self: $val;
+}
+@mixin order($val){
+  -webkit-box-ordinal-group: $val + 1;
+              -webkit-order: $val;
+     -moz-box-ordinal-group: $val + 1;
+             -ms-flex-order: $val;
+                      order: $val;
+}
+@mixin placeholder{
+  &::-webkit-input-placeholder{
+    @content;
+  }
+  &::-moz-placeholder{
+    @content;
+  }
+  &:-ms-input-placeholder{
+    @content;
+  }
+  &:-moz-placeholder{
+    @content;
+  }
+  &::placeholder{
+    @content;
+  }
+}

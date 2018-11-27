@@ -9,7 +9,6 @@
   -webkit-transition: 1s;
   -moz-transition: 1s;
   -ms-transition: 1s;
-  -o-transition: 1s;
   transition: 1s;
   left: 0vw;
 }
@@ -18,8 +17,6 @@
   width: 100vw;
   float: left;
   overflow: visible;
-  text-indent: 100000%;
-  color: #00000000;
 }
 
 .setas a {
@@ -29,13 +26,12 @@
   width: 37px;
   height: 82px;
   text-indent: -9999px;
-  z-index: 9999;
+  z-index: 99;
   cursor: pointer;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -ms-background-size: cover !important;
+  background-size: cover !important;
 }
 .setas a:first-child {
   left: 10px;
@@ -50,14 +46,13 @@
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -ms-transition: none !important;
-  -o-transition: none !important;
   transition: none !important;
 }
 
 .indicador {
   text-align: center;
   width: 100%;
-  bottom: 4%;
+  bottom: 7%;
   position: absolute;
 }
 .indicador > * {
@@ -69,17 +64,22 @@
   outline: 0;
   width: 20px;
   height: 20px;
-  z-index: 9999;
+  z-index: 99;
   cursor: pointer;
   background-color: white;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
-  -o-border-radius: 20px;
   border-radius: 20px;
-  /*box-shadow: 0px 0px 0px 1px white;*/
+  -webkit-box-shadow: 0px 0px 0px 4px white;
+  -moz-box-shadow: 0px 0px 0px 4px white;
+  -ms-box-shadow: 0px 0px 0px 4px white;
+  box-shadow: 0px 0px 0px 4px white;
 }
 .indicador a.ativo, .indicador a:hover {
-  /*box-shadow: 0px 0px 0px 1px white;*/
+  -webkit-box-shadow: 0px 0px 0px 4px white;
+  -moz-box-shadow: 0px 0px 0px 4px white;
+  -ms-box-shadow: 0px 0px 0px 4px white;
+  box-shadow: 0px 0px 0px 4px white;
   background-color: #a3151a;
 }
