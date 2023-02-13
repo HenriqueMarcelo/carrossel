@@ -1,3 +1,5 @@
+[Documentation in English 🇬🇧](README.md)
+
 # Projeto de Banner Rotativo em JavaScript
 
 Este é um projeto simples de banner rotativo criado em JavaScript puro, sem a utilização de bibliotecas externas. Ele tem como objetivo exibir imagens de forma intercalada em uma área específica de uma página web.

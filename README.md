@@ -1,3 +1,5 @@
+[Documentação em português 🇧🇷](README.pt.md)
+
 # Rotating Banner Project in JavaScript
 
 This is a simple rotating banner project created in pure JavaScript, without the use of external libraries. It aims to display images interspersed in a specific area of a web page.
