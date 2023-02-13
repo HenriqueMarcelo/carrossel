@@ -16,7 +16,7 @@ It is perfectly compatible with the container functionality of frameworks like b
 To use this project on your site, just follow these steps:
 
 1. Download the files of this project;
-2. Add the carousel.css and carousel.js files to your HTML page;
+2. Add the carrossel.css and carrossel.js files to your HTML page;
 3. Insert the following code in your HTML page where you want to display the rotating banner
 ```
 <div class="carrossel">
